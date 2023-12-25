@@ -1,0 +1,123 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "raw"
+authors = [
+    { name = "Prashant Bahuguna", email = "bahugunap1@gmail.com" },
+]
+dynamic = ["version", "description"]
+readme = "README.md"
+license = { file = "LICENSE" }
+urls = { Home = "https://github.com/teamMindee/ptah" }
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "scikit-learn==1.3.2",
+    "pandas",
+    "tokenizers",
+  "loguru>=0.6.0",
+  "unidecode==1.1.2", # FOLLOW COMMON VERSION
+]
+
+dev = [
+  "pre-commit>=3.0.0",
+  "ruff>=0.0.248",
+  "black>=23.1.0",
+  "blacken-docs>=1.13.0",
+  "mypy>=1.0.0",
+  "codespell>=2.2.2",
+  "darglint>=1.8.1",
+  "types-tqdm",
+  "types-PyYAML",
+]
+
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov",
+    "pytest-mock",
+]
+
+doc = [
+  "sphinx>=5.0.0",
+  "sphinxemoji",
+  "sphinx-copybutton",
+  "myst-parser>=0.18.1",
+  "sphinx-tabs",
+  "sphinx-rtd-theme",
+  "autodoc_pydantic",
+]
+
+[tool.flit.module]
+name = "ptah"
+
+[tool.ruff]
+# Use of assert detected
+ignore = ["E501", "S101"]
+src = ["src"]
+line-length = 100
+target-version = "py38"
+select = [
+    "B",
+    "D",
+    "E",
+    "F",
+    "I",
+    "N",
+    "PGH",
+    "UP",
+    "S",
+    "T20",
+    "TID",
+    "W",
+]
+
+[tool.ruff.per-file-ignores]
+"tests/*.py" = ["D"]
+"scripts/*.py" = ["D", "PGH"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[tool.ruff.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
+
+[tool.ruff.pep8-naming]
+classmethod-decorators = [
+  "classmethod",
+  "pydantic.validator",
+  "pydantic.root_validator",
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.black]
+line-length = 100
+skip-magic-trailing-comma = true
+
+[tool.mypy]
+python_version = "3.8"
+files = "src"
+enable_error_code = ["ignore-without-code", "redundant-expr"]
+# --strict
+disallow_any_generics = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+implicit_reexport = false
+strict_equality = true
+warn_unreachable = true
+# --strict end
