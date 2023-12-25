@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "raw"
+name = "AI_text_dect"
 authors = [
     { name = "Prashant Bahuguna", email = "bahugunap1@gmail.com" },
 ]
@@ -58,7 +58,7 @@ doc = [
 ]
 
 [tool.flit.module]
-name = "ptah"
+name = "raw"
 
 [tool.ruff]
 # Use of assert detected
