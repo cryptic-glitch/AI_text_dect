@@ -24,7 +24,6 @@ plt.title('Distribution of Labels')
 plt.show()
 
 # Explore the text data
-# Display a few examples of the 'text' column
 print(train_data['text'].head())
 
 # Explore the length of the text
